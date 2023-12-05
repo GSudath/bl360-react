@@ -1,9 +1,10 @@
-import React from "react";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes";
+import Login from "./components/login";
+import Auth from "./navbar/auth";
 
-const App = () => {
-    return <RouterProvider router={router}/>;
-};
+function App() { 
+    return (
+        <Login />
+    );
+  }
 
 export default App;
