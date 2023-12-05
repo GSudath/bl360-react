@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import Home from '../components/home';
 import AuthUser from '../components/AuthUser';
+import Home from '../Pages/Home';
 function Auth() {
     // const {token,logout} = AuthUser();
     // const logoutUser = () => {
