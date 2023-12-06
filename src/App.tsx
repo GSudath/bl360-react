@@ -1,13 +1,11 @@
-import React from "react";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes";
 import Invoice from "./Pages/Invoice/Invoice";
-import New from "./Pages/Invoice/New";
+import Login from "./components/login";
 
-const App = () => {
-    // return <RouterProvider router={router}/>;
-    // return <Invoice/>
-    return <New/>
-};
+function App() { 
+    return (
+        // <Login />
+        <Invoice />
+    );
+  }
 
 export default App;
