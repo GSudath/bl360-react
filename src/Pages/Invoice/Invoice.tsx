@@ -22,7 +22,7 @@ export default function Invoice() {
         // <form>
         <Box component="form" sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }} noValidate autoComplete='off'>
             <div style={{ display: 'grid', gridTemplateRows: '30% 30% 40%' }}>
-                <div style={{ display: "grid", gridTemplateColumns: "30% 40% 30%", columnGap: "1rem" }}>
+                <div style={{ display: "grid", gridTemplateRows: "30% 40% 30%", columnGap: "1rem" }}>
                     <div style={{ width: 'auto' }}>
 
                         
