@@ -1,9 +1,10 @@
 import React from "react";
+import InvPage from "../Invoice/InvPage";
 
 const Home = () => {
     return (
         <div>
-            Home
+            <InvPage />
         </div>
     );
 };

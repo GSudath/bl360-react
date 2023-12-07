@@ -1,10 +1,12 @@
-import Invoice from "./Pages/Invoice/Invoice";
+import Home from "./Pages/Home";
+
 import Login from "./components/login";
 
 function App() { 
     return (
         // <Login />
-        <Invoice />
+      // <Invoice />
+      <Home/>
     );
   }
 
