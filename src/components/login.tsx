@@ -1,22 +1,7 @@
 import { useEffect, useState } from "react"
-import AuthUser from './AuthUser';
-import { Avatar, Box, Button, Container, CssBaseline, Link, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { Box, Button, Container, CssBaseline, Link, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
 import axios,{AxiosResponse} from "axios";
-import { useNavigate } from 'react-router-dom';
-
-function Copyright(props: any) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://bl360x.com/BL10/Login">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
  var url : any = "https://bluelotus360.co/CoreAPI/api/Authentication/Authenticate";
@@ -38,10 +23,8 @@ interface TokenResponse {
 
 export default function Login() {
 
-    //const dispatch = useDispatch();
-    //const {http,setToken} = AuthUser();
-  
     const [responseObj, setResponseObj] = useState<TokenResponse | null>(null);
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -59,8 +42,8 @@ export default function Login() {
           localStorage.setItem('TokenResponse.token', JSON.stringify(res.data.token));
           localStorage.setItem('TokenResponse.refreshToken', JSON.stringify(res.data.refreshToken));
           localStorage.setItem('TokenResponse.isSuccess', JSON.stringify(res.data.isSuccess));
-          
-          //router.push('/companyselection');
+
+          navigate('/companyselection');
         }
     };
 
@@ -111,7 +94,6 @@ export default function Login() {
                         </Button>
                     </Box>  
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
     )    
