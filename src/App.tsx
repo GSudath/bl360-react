@@ -4,12 +4,15 @@ import Auth from "./navbar/auth";
 import CompanySelection from "./Pages/Login/companyselection";
 import RootLayout from "./Pages/Layouts/rootlayout";
 import Home from "./Pages/Home/home";
+import InvPage from "./Pages/Invoice/InvPage";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index path="" element={<Login />} />
       <Route path="companyselection" element={<CompanySelection />} />
+      <Route path="invoice" element={<InvPage />} />
     </Route>
   )
 )
