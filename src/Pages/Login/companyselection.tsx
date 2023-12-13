@@ -36,7 +36,7 @@ export default function CompanySelection() {
 
     // console.log(response);
 
-    const options = ['Option 1', 'Option 2'];
+    const options = ['Demo Company'];
     const [value, setValue] = React.useState<string | null>(options[0]);
     const [inputValue, setInputValue] = React.useState('');
 
