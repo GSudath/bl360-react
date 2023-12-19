@@ -1,40 +1,26 @@
 import { Autocomplete, Box, Button, Container, CssBaseline, TextField, ThemeProvider, Typography, createTheme } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from '../../store/Routes/Api';
 
 const defaultTheme = createTheme();
 
- var url : any = "https://bluelotus360.co/CoreAPI/api/Authentication/GetUserCompanies";
- var hdr : any = {
-  "Content-type" : "application/json",
-  "IntegrationID":"1aa6a39b-5f54-4905-880a-a52733fd6105"
-};
-
-type CompanyResponse = {
-    CompanyKey : number,
-    CompanyCode : string,
-    CompanyName : string
-  }
-
-const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    
-    // var savedToken = await localStorage.getItem('TokenResponse.token');
-    // if(savedToken != null)
-    // {
-    // }
-};
-
 export default function CompanySelection() {
 
-    var _req : CompanyResponse = {
-        CompanyKey : 1,
-        CompanyCode: '',
-        CompanyName: ''
-    };
+    const navigate = useNavigate();
+ 
+    const handleClick = () => {
+        navigate("/invoice");
+      };
 
-    // const response = await axios.post(url, _req, {headers:hdr});
-
-    // console.log(response);
+      api.get('/Authentication/GetUserCompanies')
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     const options = ['Demo Company'];
     const [value, setValue] = React.useState<string | null>(options[0]);
@@ -71,8 +57,9 @@ export default function CompanySelection() {
                         renderInput={(params) => <TextField {...params} />}
                     />
 
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <Box component="form" noValidate sx={{ mt: 1 }}>
                         <Button
+                            onClick={handleClick}
                             type="submit"
                             fullWidth
                             variant="contained"
