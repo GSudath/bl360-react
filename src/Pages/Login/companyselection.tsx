@@ -14,7 +14,7 @@ export default function CompanySelection() {
         navigate("/invoice");
       };
 
-      api.get('/Authentication/GetUserCompanies')
+      api.post('/Authentication/GetUserCompanies')
       .then((response) => {
         console.log(response.data);
       })

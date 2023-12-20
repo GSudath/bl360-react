@@ -30,9 +30,9 @@ export default function Login() {
         
         if(res.data != null && res.data.isSuccess)
         {
-          localStorage.setItem('TokenResponse.token', JSON.stringify(res.data.token));
-          localStorage.setItem('TokenResponse.refreshToken', JSON.stringify(res.data.refreshToken));
-          localStorage.setItem('TokenResponse.isSuccess', JSON.stringify(res.data.isSuccess));         
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('refreshToken', res.data.refreshToken);
+          localStorage.setItem('isSuccess', res.data.isSuccess);         
 
           navigate('/companyselection');
         }
