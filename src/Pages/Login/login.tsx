@@ -3,6 +3,7 @@ import { Box, Button, Container, CssBaseline, Link, TextField, ThemeProvider, Ty
 import axios,{AxiosResponse} from "axios";
 import { useNavigate } from "react-router-dom";
 import { CompanyResponse, TokenRequest, TokenResponse, companyResponse, tokenRequest } from "../../store/application";
+import AuthUser from "../../store/Routes/AuthUser";
 
 const defaultTheme = createTheme();
  var url : any = "https://bluelotus360.co/CoreAPI/api/Authentication/Authenticate";
@@ -15,8 +16,8 @@ export default function Login() {
 
     const [responseObj, setResponseObj] = useState<TokenResponse | null>(null);
     const navigate = useNavigate();
+    const auth = AuthUser();
     const _tokenRequest: TokenRequest = tokenRequest;
-    const _req: CompanyResponse = companyResponse;
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -33,8 +34,7 @@ export default function Login() {
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('refreshToken', res.data.refreshToken);
           localStorage.setItem('isSuccess', res.data.isSuccess);         
-
-          navigate('/companyselection');
+          auth.SetUserCompanies();
         }
     };
 

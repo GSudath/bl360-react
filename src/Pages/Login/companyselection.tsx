@@ -3,27 +3,21 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../../store/Routes/Api';
+import AuthUser from "../../store/Routes/AuthUser";
 
 const defaultTheme = createTheme();
 
 export default function CompanySelection() {
 
     const navigate = useNavigate();
- 
+    const auth = AuthUser();
+    var list = ['Demo Company'];
+
     const handleClick = () => {
         navigate("/invoice");
       };
 
-      api.post('/Authentication/GetUserCompanies')
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
-    const options = ['Demo Company'];
-    const [value, setValue] = React.useState<string | null>(options[0]);
+    const [value, setValue] = React.useState<string | null>(list[0]);
     const [inputValue, setInputValue] = React.useState('');
 
     return(
@@ -52,7 +46,7 @@ export default function CompanySelection() {
                         setInputValue(newInputValue);
                         }}
                         id="controllable-states-demo"
-                        options={options}
+                        options={list}
                         sx={{ width: 300 }}
                         renderInput={(params) => <TextField {...params} />}
                     />
