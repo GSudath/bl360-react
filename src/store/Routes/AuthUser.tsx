@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CompanyResponse } from '../application';
 
-export default function AuthUser(){
+
+interface CompanySelectionProps {
+  compnayData: (data: string) => void;
+ }
+
+export default function AuthUser() {
 
     const navigate = useNavigate();
     const [companyObj, setCompanyResponse] = useState<CompanyResponse[] | null>(null);
@@ -13,8 +18,26 @@ export default function AuthUser(){
     //     const userToken = JSON.parse(tokenString);
     //     return userToken;
     // }
-
-    const SetUserCompanies = () => {
+    const GetUsercompaniesList = async () => {
+      try {
+        var response = await instance.post('/Authentication/GetUserCompanies')
+        var resultarray: CompanyResponse[] = response.data;
+        return resultarray;
+      } catch (error) {
+        console.error(error);
+      }
+    // .then(async (response) => {
+    //   var firstresult : CompanyResponse;
+    //   firstresult = response.data[0];
+    //   UpdateSelectedCompany(firstresult);
+    //   await setCompanyResponse(response.data);
+    // })
+    // .catch((error) => {
+    //   console.error('Error:', error);
+    // });
+    // navigate('/companyselection');
+}
+    const SetUserCompanies = async () => {
         instance.post('/Authentication/GetUserCompanies')
       .then(async (response) => {
         var firstresult : CompanyResponse;
@@ -26,17 +49,13 @@ export default function AuthUser(){
         console.error('Error:', error);
       });
       navigate('/companyselection');
-    }
-
-    // const GetCompanies = () => {
-    //   var list : any;
-    //   console.log(value);
-    //   return list;
-    // }
+  }
+   
 
     const UpdateSelectedCompany = (request : CompanyResponse) => {
         instance.post('/Authentication/UpdateSelectedCompany', request)
-      .then(async (response) => {
+          .then(async (response) => {
+            
 
         if(response.data != null && response.data.isSuccess)
         {
@@ -50,7 +69,7 @@ export default function AuthUser(){
         console.error('Error:', error);
       });
     }
-
+  
     // const logout = () => {
     //     sessionStorage.clear();
     //     navigate('/login');
@@ -80,5 +99,6 @@ export default function AuthUser(){
     return {   
         instance,
         SetUserCompanies,
+        useEffect,GetUsercompaniesList
     }
 }
