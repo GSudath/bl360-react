@@ -11,8 +11,6 @@ interface CompanySelectionProps {
 export default function AuthUser() {
 
     const navigate = useNavigate();
-    const [companyObj, setCompanyResponse] = useState<CompanyResponse[] | null>(null);
-
     // const getToken = () =>{
     //     const tokenString = sessionStorage.getItem('token') ?? '';
     //     const userToken = JSON.parse(tokenString);
@@ -26,15 +24,7 @@ export default function AuthUser() {
       } catch (error) {
         console.error(error);
       }
-    // .then(async (response) => {
-    //   var firstresult : CompanyResponse;
-    //   firstresult = response.data[0];
-    //   UpdateSelectedCompany(firstresult);
-    //   await setCompanyResponse(response.data);
-    // })
-    // .catch((error) => {
-    //   console.error('Error:', error);
-    // });
+    
     // navigate('/companyselection');
 }
     const SetUserCompanies = async () => {
@@ -43,12 +33,10 @@ export default function AuthUser() {
         var firstresult : CompanyResponse;
         firstresult = response.data[0];
         UpdateSelectedCompany(firstresult);
-        await setCompanyResponse(response.data);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-      navigate('/companyselection');
   }
    
 

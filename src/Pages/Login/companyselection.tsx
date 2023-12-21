@@ -6,6 +6,7 @@ import api from '../../store/Routes/Api';
 import AuthUser from "../../store/Routes/AuthUser";
 import { get } from "http";
 import { CompanyResponse } from "../../store/application";
+import BLButton from "../../components/BLButtoin";
 
 const defaultTheme = createTheme();
 
@@ -23,18 +24,12 @@ export default  function CompanySelection() {
             var mylist : string[] = [];
             for (var company of companies) {
                 mylist = mylist.concat(company.companyName);
-            //console.log(company.companyName)
             }
             setList(mylist);
-            console.log(mylist)
         }
     }
-    useEffect(() => {
-        getCList(
-        
-    )},[])
-            console.log(list)
-    
+
+    useEffect(() => {getCList()},[])    
 
     const handleClick = () => {
         navigate("/invoice");

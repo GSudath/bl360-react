@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React from 'react';
 
 type ButtonProps = {
@@ -7,21 +8,21 @@ type ButtonProps = {
   children: React.ReactNode;
 };
 
-const Button: React.FC<ButtonProps> = ({
+const BLButton: React.FC<ButtonProps> = ({
   onClick,
   disabled = false,
   className = '',
   children,
 }) => {
   return (
-    <button
+    <Button
       onClick={onClick}
       disabled={disabled}
       className={`btn ${className}`}
     >
       {children}
-    </button>
+    </Button>
   );
 };
 
-export default Button;
+export default BLButton;

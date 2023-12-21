@@ -35,6 +35,7 @@ export default function Login() {
           localStorage.setItem('refreshToken', res.data.refreshToken);
           localStorage.setItem('isSuccess', res.data.isSuccess);         
           auth.SetUserCompanies();
+          navigate('/companyselection');
         }
     };
 
