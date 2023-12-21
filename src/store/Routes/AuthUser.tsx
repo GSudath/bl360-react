@@ -36,7 +36,8 @@ export default function AuthUser(){
         {
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('refreshToken', response.data.refreshToken);
-          // localStorage.setItem('companyName', request.CompanyName);
+          localStorage.setItem('companyName', request.companyName);
+          console.log(request);
         }
 
       })
