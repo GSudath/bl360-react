@@ -13,9 +13,9 @@
   }
 
   export interface CompanyResponse {
-    CompanyKey : number,
-    CompanyCode : string,
-    CompanyName : string
+    companyKey : number,
+    companyCode : string,
+    companyName : string
   }
 
   // Define the default values
@@ -25,7 +25,7 @@
   };
 
   export const companyResponse : CompanyResponse = {
-    CompanyKey : 1,
-    CompanyCode: '',
-    CompanyName: ''
+    companyKey : 1,
+    companyCode: '',
+    companyName: ''
 };
