@@ -28,6 +28,12 @@ export default function AuthUser(){
       navigate('/companyselection');
     }
 
+    // const GetCompanies = () => {
+    //   var list : any;
+    //   console.log(value);
+    //   return list;
+    // }
+
     const UpdateSelectedCompany = (request : CompanyResponse) => {
         instance.post('/Authentication/UpdateSelectedCompany', request)
       .then(async (response) => {
@@ -37,7 +43,6 @@ export default function AuthUser(){
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('refreshToken', response.data.refreshToken);
           localStorage.setItem('companyName', request.companyName);
-          console.log(request);
         }
 
       })
@@ -75,6 +80,5 @@ export default function AuthUser(){
     return {   
         instance,
         SetUserCompanies,
-        useEffect
     }
 }
