@@ -15,7 +15,16 @@ export default  function CompanySelection() {
     const navigate = useNavigate();
     const auth = AuthUser();
     const [list, setList] = useState<string[]>([]);
-    
+
+    const [companyList, setCompanyList] = useState<CompanyResponse[]>([]);
+
+    const getCompanyList = async () => {
+        var companies: CompanyResponse[] | undefined = await auth.GetUsercompaniesList();
+        if(companies != undefined){
+            setCompanyList(companies);
+        }
+    }
+    useEffect(() => {getCompanyList()},[])
     
     
     const getCList = async () => {
