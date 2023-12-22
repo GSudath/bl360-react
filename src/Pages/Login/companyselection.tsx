@@ -14,7 +14,9 @@ export default  function CompanySelection() {
 
     const navigate = useNavigate();
     const auth = AuthUser();
-    const [list,setList] = useState<string[]>([]);
+    const [list, setList] = useState<string[]>([]);
+    
+    
     
     const getCList = async () => {
 
